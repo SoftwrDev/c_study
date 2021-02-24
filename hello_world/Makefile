@@ -1,18 +1,15 @@
 
-INCLUDES += ""
-OUTPUT = bin/hello
-FILES += hello.c
-
 prepare:
 	@rm -fr bin || true && \
 	mkdir -p bin
 
 compile:
-	gcc -I $(INCLUDES) -c $(FILES)
+	gcc -c hello.c
 
 build: prepare hello.o
-	gcc -I $(INCLUDES) $(FILES) -o $(OUTPUT) && \
+	gcc hello.c -o bin/hello && \
 	make clean
 
 clean:
-	@rm *.o
+	@echo "Cleaning Artifacts..." && \
+	rm *.o
